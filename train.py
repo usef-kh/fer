@@ -18,7 +18,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 def train(net, dataloader, criterion, optimizer, scaler):
     net = net.train()
     loss_tr, correct_count, n_samples = 0.0, 0.0, 0.0
-    iters = len(dataloader)
+    iters = len(dataloader)    # number of batches, not images
     
     for i, data in enumerate(dataloader):
         inputs, labels = data
@@ -32,12 +32,12 @@ def train(net, dataloader, criterion, optimizer, scaler):
             
             # repeat labels ncrops times
             labels = torch.repeat_interleave(labels, repeats=ncrops, dim=0)
-    
+            print('hihihi')
             # forward + backward + optimize
             outputs = net(inputs)
             loss = criterion(outputs, labels)
             scaler.scale(loss).backward()
-            
+            print('yousif')
             if ((i + 1) %  2 == 0) or ((i + 1) == len(dataloader)):
                 scaler.step(optimizer)
                 scaler.update()
@@ -139,10 +139,10 @@ def run(net, logger, hps):
             save(net, logger, hps, epoch + 1)
             logger.save_plt(hps)    
             
-            acc_test, loss_test = evaluate(net, testloader, criterion)
-            print('Test Accuracy: %2.4f %%' % acc_test,
-                  'Test Loss: %2.6f' % loss_test,
-                  sep='\t\t')
+            # acc_test, loss_test = evaluate(net, testloader, criterion)
+            # print('Test Accuracy: %2.4f %%' % acc_test,
+            #       'Test Loss: %2.6f' % loss_test,
+            #       sep='\t\t')
 
         print('Epoch %2d' % (epoch + 1),
               'Train Accuracy: %2.4f %%' % acc_tr,

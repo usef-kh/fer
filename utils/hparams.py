@@ -13,7 +13,7 @@ hps = {
 }
 
 possible_nets = {
-    'vgg', 'efn'
+    'vgg', 'efn', 'vgg2'
 }
 
 

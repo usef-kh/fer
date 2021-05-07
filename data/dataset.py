@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
-import cv2
+# import cv2
 
 class CustomDataset(Dataset):
     def __init__(self, images, labels, transform=None):
@@ -10,7 +10,7 @@ class CustomDataset(Dataset):
         self.labels = labels
         self.transform = transform
 
-        self.clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(4,4))
+        # self.clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(4,4))
 
     def __len__(self):
         return len(self.images)
@@ -24,9 +24,9 @@ class CustomDataset(Dataset):
 
         # image =  image.squeeze(0)
         # print(image.shape)
-        img = np.uint8(cv2.normalize(img, None, 0, 255, cv2.NORM_MINMAX))
+        # img = np.uint8(cv2.normalize(img, None, 0, 255, cv2.NORM_MINMAX))
         # img = np.uint8(img)#cv2.normalize(img, None, 0, 255, cv2.NORM_MINMAX))
-        img = cv2.equalizeHist(img)
+        # img = cv2.equalizeHist(img)
         
         # img = self.clahe.apply(img)
         img = Image.fromarray(img)
