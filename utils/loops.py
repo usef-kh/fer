@@ -24,14 +24,11 @@ def train(net, dataloader, criterion, optimizer, scaler, Ncrop=True):
 
             # repeat labels ncrops times
             labels = torch.repeat_interleave(labels, repeats=ncrops, dim=0)
-            print('hihihi')
-            print(len(labels))
-            print(labels)
+
             # forward + backward + optimize
             outputs = net(inputs)
             loss = criterion(outputs, labels)
             scaler.scale(loss).backward()
-            print('yousif')
 
             scaler.step(optimizer)
             scaler.update()

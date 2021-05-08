@@ -61,7 +61,7 @@ def get_dataloaders(path='datasets/fer2013/fer2013.csv', augment=True):
 
     val_transform = transforms.Compose([
         # transforms.Scale(52),
-        # transforms.TenCrop(40),
+        transforms.RandomCrop(40),
         transforms.ToTensor(),
         transforms.Normalize(mean=(mu,), std=(st,)),
     ])

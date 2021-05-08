@@ -54,12 +54,10 @@ class VggFeatures2(nn.Module):
         x = F.relu(self.bn4a(self.conv4a(x)))
         x = F.relu(self.bn4b(self.conv4b(x)))
         x = self.pool(x)
-        # print(x.shape)
 
         x = x.view(-1, 512 * 2 * 2)
         x = F.relu(self.drop(self.lin1(x)))
         x = F.relu(self.drop(self.lin2(x)))
-
         return x
 
 

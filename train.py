@@ -55,7 +55,7 @@ def run(net, logger, hps):
         logger.loss_train.append(loss_tr)
         logger.acc_train.append(acc_tr)
 
-        acc_v, loss_v = evaluate(net, valloader, criterion)
+        acc_v, loss_v = evaluate(net, valloader, criterion, Ncrop=False)
         logger.loss_val.append(loss_v)
         logger.acc_val.append(acc_v)
 
