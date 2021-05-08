@@ -8,6 +8,8 @@ from torch.utils.data import DataLoader
 from data.dataset import CustomDataset
 
 
+
+
 def load_data(path='datasets/fer2013/fer2013.csv'):
     fer2013 = pd.read_csv(path)
     emotion_mapping = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Surprise', 6: 'Neutral'}
@@ -49,12 +51,21 @@ def get_dataloaders(path='datasets/fer2013/fer2013.csv', augment=True):
     xtest, ytest = prepare_data(fer2013[fer2013['Usage'] == 'PublicTest'])
 
     mu, st = 0, 255
+
     test_transform = transforms.Compose([
         # transforms.Scale(52),
         transforms.TenCrop(40),
         transforms.Lambda(lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops])),
         transforms.Lambda(lambda tensors: torch.stack([transforms.Normalize(mean=(mu,), std=(st,))(t) for t in tensors])),
     ])
+
+    val_transform = transforms.Compose([
+        # transforms.Scale(52),
+        # transforms.TenCrop(40),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(mu,), std=(st,)),
+    ])
+
 
     if augment:
         train_transform = transforms.Compose([
@@ -80,10 +91,10 @@ def get_dataloaders(path='datasets/fer2013/fer2013.csv', augment=True):
     # Y = np.hstack((ytrain, yval))
 
     train = CustomDataset(xtrain, ytrain, train_transform)
-    val = CustomDataset(xval, yval, test_transform)
+    val = CustomDataset(xval, yval, val_transform)
     test = CustomDataset(xtest, ytest, test_transform)
 
-    trainloader = DataLoader(train, batch_size=32, shuffle=True)
+    trainloader = DataLoader(train, batch_size=64, shuffle=True)
     valloader = DataLoader(val, batch_size=64, shuffle=True)
     testloader = DataLoader(test, batch_size=64, shuffle=True)
 
