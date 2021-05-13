@@ -10,7 +10,7 @@ In this work, we achieve the highest single-network classification accuracy on F
 
 ### Tuning
 
-In tuning, we experiment with sever deifferent optimizers, learning scheduler s and run a grid search over all parameters. Some of our results are shown below.
+In tuning, we experiment with several deifferent optimizers, learning scheduler s and run a grid search over all parameters. Some of our results are shown below.
 
 Optimizers            |  Schedulers
 :-------------------------:|:-------------------------:
