@@ -1,6 +1,6 @@
 ## Facial Emotion Recognition (FER)
 
-This work is published on [arXiv](https://arxiv.org/pdf/2105.03588.pdf)
+This work is published on [arXiv](https://arxiv.org/abs/2105.03588)
 
 ### Overview
 In this work, we achieve the highest single-network classification accuracy on FER2013. We adopt the VGGNet architecture, rigorously fine-tune its hyperparameters, and experiment with various optimization methods. To our best knowledge, our model achieves state-of-the-art single-network accuracy of 73.28 % on FER2013 without using extra training data.
