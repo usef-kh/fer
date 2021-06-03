@@ -1,3 +1,5 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/facial-emotion-recognition-state-of-the-art/facial-expression-recognition-on-fer2013)](https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013?p=facial-emotion-recognition-state-of-the-art)
+
 ## Facial Emotion Recognition (FER)
 
 This work is published on [arXiv](https://arxiv.org/abs/2105.03588)
