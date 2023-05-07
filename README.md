@@ -4,7 +4,7 @@
 
 This work is published on [arXiv](https://arxiv.org/abs/2105.03588)
 
-Our final model checkpoint can be found [here](https://drive.google.com/file/d/1uXGMXRk09r1ZQGFFEcoKXLKZHuaXDtNT/view?usp=sharing)
+Our final model checkpoint can be found [here](https://drive.google.com/file/d/1Fj0d2MNspmgvWStmFvcGGyqxBXsdvN4s/view?usp=sharing)
 ### Overview
 In this work, we achieve the highest single-network classification accuracy on FER2013. We adopt the VGGNet architecture, rigorously fine-tune its hyperparameters, and experiment with various optimization methods. To our best knowledge, our model achieves state-of-the-art single-network accuracy of 73.28 % on FER2013 without using extra training data.
 
